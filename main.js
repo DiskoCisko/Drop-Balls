@@ -1,13 +1,18 @@
 
-// setup canvas
+// настройки для canvas
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
+// для настройки шаров
+
 var rangSize = document.querySelector('.size-ball');
 var rangNum = document.querySelector('.num-ball');
+var speedNum = document.querySelector('.speed-ball');
+var colorNum = document.querySelector('.color-ball');
+
 // function to generate random number
 
 function random(min, max) {
@@ -89,9 +94,9 @@ function Ball(x, y, velX, velY, color, size) {
 // анимация мяча
 
 var balls = [];
-var num = 10;
+var num = 10; // начальное количество шаров
 
-function loop(ballsNum) {
+function loop() {
     
     ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
     ctx.fillRect(0, 0, width, height);
@@ -121,9 +126,7 @@ function loop(ballsNum) {
     
   }
 
-  // var testBall = new Ball(50, 100, 4, 4, 'blue', 10);
-  // testBall.draw()
-
+  // Меняем размер шаров в зависимости от range.value
   rangSize.addEventListener('change', function(event){
     console.log(event.target.value)
     let maxSize = event.target.value;
@@ -131,14 +134,9 @@ function loop(ballsNum) {
     balls.forEach(function(ball) {
       ball.size = random(10,maxSize);
     })
-
-      // for (let i = 0; i<balls.length; i++) {
-      //   balls[i].size = random(10,maxSize);
-        
-      // }
-
   })
 
+// Удаляем и добавляем шары в зависимости от range.value
 rangNum.addEventListener('change', function(event){
    num = event.target.value;
   if (balls.length > num) {
@@ -164,5 +162,38 @@ rangNum.addEventListener('change', function(event){
 
   }
 })
+// Меняем скорость в зависимости от range.value
+speedNum.addEventListener('change', function(event){
+  let maxSize = event.target.value;
+  balls.forEach(function(ball) {
+    ball.velX = random(-maxSize, maxSize);
+    ball.velY = random(-maxSize, maxSize);
+  })
+})
+// Меняем цвет в зависимости от range.value
+colorNum.addEventListener('change', function(event){
+  let maxSize = event.target.value;
+  balls.forEach(function(ball) {
+    ball.color = 'rgb(' + random(0,maxSize) + ',' + random(0,maxSize) + ',' + random(0,maxSize) +')'
+  })
+})
 
+// запуск шаров
   loop();
+
+// для кномок меню
+const close = document.querySelector('.cls-btn');
+const inputWrp = document.querySelector('.input-wrp');
+const showtWrp = document.querySelector('.show-btn');
+
+showtWrp.addEventListener("click", function () {
+  inputWrp.classList.toggle("active")
+  showtWrp.classList.toggle("active")
+
+})
+
+close.addEventListener("click", function () {
+  inputWrp.classList.toggle("active")
+  showtWrp.classList.toggle("active")
+
+})

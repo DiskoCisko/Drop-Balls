@@ -7,10 +7,23 @@
   </head>
 
   <body>
+    
     <div class="container">
+      <div class="show-btn active">
+        Настройки
+      </div>
       <div class="input-wrp">
+        <div class="cls-btn">
+          <img src="img/close.png" alt="">
+        </div>
+        <p class="num-title">Размер</p>
         <input type="range" min="10" max="100" class="size-ball">
+        <p class="num-title">Колличество</p>
         <input type="range" min="10" max="100" class="num-ball">
+        <p class="num-title">Скорость</p>
+        <input type="range" min="1" max="100" class="speed-ball">
+        <p class="num-title">Цвет</p>
+        <input type="range" min="0" max="255" class="color-ball">
       </div>
     </div>
     <canvas></canvas>

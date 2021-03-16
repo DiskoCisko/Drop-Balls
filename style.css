@@ -30,18 +30,45 @@ html, body {
     z-index: -1;
   }
   .container {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
+    padding: 50px;
     height: 100vh;
-    align-items: center;
-    justify-content: center;
   }
   .input-wrp {
     width: 200px;
     text-align: center;
-    height: 50px;
     background-color: rgba(255, 255, 255, 0.9);
-    padding-top: 30px;
     border-radius: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+    display: none;
   }
+  .active {
+    display: block !important;
+    transition: 1s;
+  }
+  .show-btn {
+    width: 200px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    display: none;
+  }
+  .show-btn:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.7);
+    transition: 0.5;
+  }
+.cls-btn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  cursor: pointer;
+}
+.cls-btn img {
+  width: 15px;
+}
